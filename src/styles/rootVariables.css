@@ -1,0 +1,17 @@
+:root {
+  /* padding */
+  --sm-p: 8px;
+  --md-p: 12px;
+
+  /* border-radius */
+  --sm-rad: 4px;
+  --md-rad: 8px;
+  --lg-rad: 16px;
+  --full-rad: 100%;
+
+  /* flex & grid gap */
+  --gap-min: 0.375rem;
+
+  /* colors */
+  --border-color: #818a9298;
+}

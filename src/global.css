@@ -1,0 +1,58 @@
+/* Consider to apply normilize file */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+}
+
+body {
+  font-family: "Comfortaa", "Segoe UI", sans-serif, system-ui;
+
+  /* responsive font-size */
+  --font-size-min: 18;
+  --font-size-max: 21;
+  --font-view-min: 576;
+  --font-view-max: 1280;
+
+  font-size: clamp(
+    calc(var(--font-size-min) * 1px),
+    calc(
+      (var(--font-size-min) * 1px) +
+        (var(--font-size-max) - var(--font-size-min)) *
+        ((100vw - (var(--font-view-min) * 1px)) / var(--font-view-max))
+    ),
+    calc(var(--font-size-max) * 1px)
+  );
+  line-height: 1.6em;
+}
+
+h1 {
+  color: #495057;
+  text-align: center;
+  background-clip: text;
+}
+
+.container {
+  min-width: 100%;
+  margin: 0 auto;
+  background-color: #f4f4f4;
+  padding: 1rem;
+}
+
+.text-input-wrapper {
+  display: flex;
+  gap: var(--gap-min);
+  border: 1px solid var(--border-color);
+}
+
+.defaultInput {
+  height: 2rem;
+  width: 100%;
+  padding: var(--md-p);
+  background: inherit;
+  border-radius: var(--sm-rad);
+  border: 1px solid var(--border-color);
+}

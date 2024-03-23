@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Color from "color";
+import { Container } from "./components/ui/Container";
+import { Divider } from "./components/ui/Divider";
+import { TextInput } from "./components/ui/Input";
+import { MainContextProvider } from "./hooks/useContext";
+import { useState } from "react";
+import { Title } from "./components/Title";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+enum defaultColors {
+  "#03224C",
+  "#FFC0CB",
+  "#808080",
+  "#00FF00",
+  "#ADD8E6",
+  "#FFA500",
+  "#663399",
+  "#30D5C8",
+  "#8B0000",
+  "#FFD700"
 }
 
-export default App
+function App() {
+  const clr = Color();
+  const [color, setColor] = useState("");
+  const [isFiltersActive, setFiltersActive] = useState(false);
+
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setColor(e.currentTarget.value);
+  };
+  return (
+    <MainContextProvider values={{ currentColor: color, isFiltersActive }}>
+      <Container>
+        <Title />
+        <Divider />
+        <TextInput
+          id="colorInput"
+          value={color}
+          handleChange={(e) => setColor(e.currentTarget.value)}
+        />
+      </Container>
+    </MainContextProvider>
+  );
+}
+
+export default App;
