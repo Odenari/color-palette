@@ -1,4 +1,4 @@
-/* Consider to apply normilize file */
+/* Consider to apply normalize file */
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +9,11 @@
 }
 
 body {
-  font-family: "Comfortaa", "Segoe UI", sans-serif, system-ui;
-
+  font-family: 'Comfortaa', 'Segoe UI', sans-serif, system-ui;
+  color: var(--txt-main-color);
   /* responsive font-size */
   --font-size-min: 18;
-  --font-size-max: 21;
+  --font-size-max: 26;
   --font-view-min: 576;
   --font-view-max: 1280;
 
@@ -26,33 +26,67 @@ body {
     ),
     calc(var(--font-size-max) * 1px)
   );
-  line-height: 1.6em;
 }
 
 h1 {
-  color: #495057;
+  margin-block: 0.75rem;
+  color: var(--txt-main-color);
   text-align: center;
   background-clip: text;
 }
 
 .container {
   min-width: 100%;
-  margin: 0 auto;
-  background-color: #f4f4f4;
-  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--main-bg-clr);
+  padding-inline: 1rem;
 }
 
 .text-input-wrapper {
   display: flex;
-  gap: var(--gap-min);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--md-pad);
+  gap: var(--gap-lg);
   border: 1px solid var(--border-color);
+  border-radius: var(--md-rad);
 }
 
-.defaultInput {
-  height: 2rem;
+.buttons-wrapper {
   width: 100%;
-  padding: var(--md-p);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.default-input {
+  height: var(--input-height, 2rem);
+  width: var(--input-width, 100%);
+  padding: var(--md-pad);
   background: inherit;
   border-radius: var(--sm-rad);
   border: 1px solid var(--border-color);
+}
+
+.default-button {
+  padding-block: var(--btn-y-pad, 0.5rem);
+  padding-inline: var(--btn-y-pad, 0.75rem);
+  font-size: var(--font-lg);
+  border-radius: var(--sm-rad);
+  background-color: var(--btn-bg-clr);
+  color: var(--txt-alt-clr);
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 100ms ease-in-out;
+}
+
+.default-button:hover {
+  transform: scale(1.1);
+}
+
+.default-button:active {
+  transform: scale(1.05);
 }

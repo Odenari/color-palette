@@ -1,5 +1,6 @@
 export interface ContextProps {
-  currentColor: string | undefined;
+  setColor: React.Dispatch<React.SetStateAction<string>>;
+  currentColor?: string | undefined;
   isFiltersActive: boolean;
   //   luminosity?: number;
   //   showAll: boolean;

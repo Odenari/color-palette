@@ -1,0 +1,6 @@
+.color-input {
+  /* add media for mobile input width */
+  --input-height: 3rem;
+  width: 100%;
+  font-size: 1.35rem;
+}

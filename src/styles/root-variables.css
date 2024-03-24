@@ -1,0 +1,35 @@
+:root {
+  /* font-sizes */
+  --font-lg: 1.25rem
+
+  /* padding */
+  --sm-pad: 0.5rem;
+  --md-pad: 0.75rem;
+  --lg-pad: 1rem;
+  --xl-pad: 1.5rem;
+
+  /* margin */
+  --sm-mar: 0.75rem;
+  --md-mar: 1rem;
+  --lg-mar: 1.5rem;
+  --xl-mar: 2rem;
+
+  /* border-radius */
+  --sm-rad: 4px;
+  --md-rad: 8px;
+  --lg-rad: 16px;
+  --full-rad: 100%;
+
+  /* flex & grid gaps */
+  --gap-sm: 0.375rem;
+  --gap-md: 0.5rem;
+  --gap-lg: 0.75rem;
+  --gap-xl: 1rem;
+
+  /* colors */
+  --txt-main-clr: #495057;
+  --txt-alt-clr: #566b6a;
+  --main-bg-clr: #f4f4f4;
+  --btn-bg-clr: #f5dea3;
+  --border-color: #818a9298;
+}
