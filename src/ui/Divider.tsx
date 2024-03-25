@@ -4,7 +4,6 @@ type Props = {
 };
 
 export const Divider = ({ mt, mb }: Props) => {
-  console.log(`${mt}rem`);
   return (
     <div
       style={{

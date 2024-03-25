@@ -1,0 +1,30 @@
+.radio-input-outer {
+  display: flex;
+  gap: var(--md-gap);
+}
+
+.filters-title {
+  font-weight: 500;
+  font-size: var(--font-md);
+  text-align: left;
+  margin-bottom: var(--sm-mar);
+}
+
+.default-non-text-input {
+  display: flex;
+  gap: var(--md-gap);
+}
+
+label {
+  width: fit-content;
+  font-size: var(--font-md);
+  font-weight: 500;
+  letter-spacing: 1.05px;
+  cursor: pointer;
+}
+
+label > input[type='checkbox'],
+label > input[type='radio'],
+label > input[type='range'] {
+  cursor: pointer;
+}

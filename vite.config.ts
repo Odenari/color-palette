@@ -8,8 +8,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '~': path.resolve(__dirname, './src'),
-      '~c': path.resolve(__dirname, './src/components'),
-      '~ui': path.resolve(__dirname, './src/components/ui'),
+      '~c': path.resolve(__dirname, './src/components/index.ts'),
+      '~ui': path.resolve(__dirname, './src/ui'),
       '~s': path.resolve(__dirname, './src/styles'),
     },
   },

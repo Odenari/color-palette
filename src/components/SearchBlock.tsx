@@ -1,7 +1,7 @@
 import { useMainContext } from '~/hooks/useMainContext';
-import { Button } from './ui/Button';
+import { Button } from '~/ui/Button';
 import { ChangeEvent } from 'react';
-import { TextInput } from './ui/TextInput';
+import { TextInput } from '../ui/TextInput';
 import styles from '~s/color-input.module.css';
 
 export const SearchBlock = () => {
@@ -14,7 +14,7 @@ export const SearchBlock = () => {
   };
 
   return (
-    <section className='text-input-wrapper'>
+    <section className='search-wrapper'>
       <TextInput
         id='colorInput'
         value={currentColor}

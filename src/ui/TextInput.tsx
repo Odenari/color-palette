@@ -1,4 +1,5 @@
 import { HTMLAttributes } from 'react';
+import styles from '~s/color-input.module.css';
 
 type Props = {
   id: string;
@@ -18,7 +19,7 @@ export const TextInput = ({
   placeholder,
 }: Props) => {
   return (
-    <label className='input-label' htmlFor={id}>
+    <label className={styles.outerElement} htmlFor={id}>
       {labelText && <span>{labelText}</span>}
       <input
         id={id}
