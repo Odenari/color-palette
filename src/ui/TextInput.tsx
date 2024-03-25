@@ -1,11 +1,12 @@
-import { HTMLAttributes } from 'react';
-import styles from '~s/color-input.module.css';
+import { HTMLAttributes } from "react";
+import styles from "~s/color-input.module.css";
 
 type Props = {
   id: string;
   labelText?: string;
   classes?: string;
   value?: string;
+  /** will overwrite default HEX regex */
   placeholder?: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 } & HTMLAttributes<HTMLInputElement>;
@@ -16,7 +17,7 @@ export const TextInput = ({
   onChange,
   classes,
   labelText,
-  placeholder,
+  placeholder
 }: Props) => {
   return (
     <label className={styles.outerElement} htmlFor={id}>
@@ -26,14 +27,14 @@ export const TextInput = ({
         name={id}
         value={value}
         onChange={onChange}
-        type='text'
+        type="text"
         className={`default-input ${classes}`}
-        placeholder={placeholder ? placeholder : 'Enter your data'}
+        placeholder={placeholder ? placeholder : "Enter ypur data"}
         required
         minLength={7}
         maxLength={7}
-        autoComplete='off'
-        title='Find existing color or add new one'
+        autoComplete="off"
+        title="Find existing color in HEX format or add new one"
       />
     </label>
   );

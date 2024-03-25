@@ -23,7 +23,7 @@
     /* Custom aliases */
     "paths": {
       "~/*": ["./src/*"],
-      "~c/*": ["./src/components/index.ts"],
+      "~c/*": ["./src/components/"],
       "~ui/*": ["./src/components/ui/*"],
       "~s/*": ["./src/styles/*"]
     }
