@@ -1,12 +1,12 @@
 interface FilterFunctions {
-  setColor: (color: string) => void;
+  setCurrentColor: (color: string) => void;
   toggleFiltersActivity: (flag: boolean) => void;
 }
 
 export const clearAllFilters = ({
-  setColor,
-  toggleFiltersActivity,
+  setCurrentColor,
+  toggleFiltersActivity
 }: FilterFunctions) => {
-  setColor('');
+  setCurrentColor("");
   toggleFiltersActivity(false);
 };

@@ -1,50 +1,67 @@
-import { useMainContext } from "~/hooks/useMainContext";
-import { Button } from "~/ui/Button";
-import { ChangeEvent, MouseEventHandler, useState } from "react";
-import { TextInput } from "../ui/TextInput";
-import styles from "~s/color-input.module.css";
+import { Button, Text, TextInput } from "~/ui/";
+import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import {
-  validateHEXcolor,
-  allowedSymbolsRegex
-} from "~/utils/validateHEXcolor";
+  setColorsToLocalStorage,
+  submitInputValue
+} from "~/utils/colorHandlers";
+import { allowedSymbolsRegex } from "~/utils/validation";
 
-export const SearchBlock = () => {
-  const { currentColor, setColor } = useMainContext();
+type Props = {
+  customColors: string[];
+};
 
-  const [dirtyColor, setDirtyColor] = useState("");
+type Events = FormEvent | KeyboardEvent | MouseEvent<HTMLButtonElement>;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const { value } = e.target;
-    // condition will skip any undesirable symbols
-    if (!allowedSymbolsRegex.test(value)) {
-      return;
+export const SearchBlock = ({ customColors }: Props) => {
+  const [inputValue, setInputValue] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+
+  const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    if (target.value.match(allowedSymbolsRegex)) {
+      setInputValue(target.value.toUpperCase());
     }
-    setDirtyColor(value.toUpperCase());
+    // Should I inform user if he enters incorrect values or caps lock or non latin?
   };
 
-  const handleClick = () => {
-    if (validateHEXcolor(dirtyColor)) {
-      setColor(dirtyColor);
-    } else {
-      console.log("Color has invalid format");
+  const handleSubmit = (e: Events) => {
+    e.preventDefault();
+    const listToRender = submitInputValue(
+      inputValue,
+      customColors,
+      setStatusMessage
+    );
+    if (listToRender) {
+      setColorsToLocalStorage(listToRender);
+      return;
     }
+    throw new Error(
+      "An unpredictable error has been detected. Please do your breathing practice to calm down and then refresh the page xD"
+    );
   };
 
   return (
-    <section className="search-wrapper">
+    <form onSubmit={(e) => handleSubmit(e)} className="search-wrapper">
       <TextInput
         id="colorInput"
-        value={dirtyColor}
+        value={inputValue}
         onChange={handleChange}
         placeholder={"# Enter HEX color here..."}
-        classes={styles["color-input"]}
+        classes="color-input"
         aria-placeholder="input hex color code"
       />
+      <Text content={statusMessage} />
       <div className="buttons-wrapper">
-        <Button onClick={handleClick}>Search</Button>
-        <Button onClick={() => setColor("")}>Clear</Button>
+        <Button
+          itemType="submit"
+          onKeyUp={(e) => handleSubmit(e)}
+          onClick={(e) => handleSubmit(e)}
+        >
+          Search
+        </Button>
+        <Button itemType="button" onClick={() => setInputValue("")}>
+          Clear
+        </Button>
       </div>
-    </section>
+    </form>
   );
 };

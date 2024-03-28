@@ -1,12 +1,10 @@
 import { HTMLAttributes } from "react";
-import styles from "~s/color-input.module.css";
 
 type Props = {
   id: string;
   labelText?: string;
   classes?: string;
   value?: string;
-  /** will overwrite default HEX regex */
   placeholder?: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
 } & HTMLAttributes<HTMLInputElement>;
@@ -20,7 +18,7 @@ export const TextInput = ({
   placeholder
 }: Props) => {
   return (
-    <label className={styles.outerElement} htmlFor={id}>
+    <label className="w-full" htmlFor={id}>
       {labelText && <span>{labelText}</span>}
       <input
         id={id}
@@ -31,7 +29,7 @@ export const TextInput = ({
         className={`default-input ${classes}`}
         placeholder={placeholder ? placeholder : "Enter ypur data"}
         required
-        minLength={7}
+        minLength={6 || 7}
         maxLength={7}
         autoComplete="off"
         title="Find existing color in HEX format or add new one"

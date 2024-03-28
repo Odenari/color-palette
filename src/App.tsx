@@ -1,11 +1,12 @@
-// import Color from "color";
+import Color from "color";
+import { MainContext } from "./mainContext";
 import { Container, Divider, Title } from "~/ui";
 import { ColorPalette, SearchBlock, Filters } from "~c/";
-import { MainContext } from "./mainContext";
 import { GlobalKeyDownHandler } from "./logic/GlobalKeyDownHandler";
 import { useStateInitializer } from "./hooks/useStateInitializer";
+import { setColorsToLocalStorage } from "./utils/colorHandlers";
 
-const DEFAULT_COLORS = [
+export const DEFAULT_COLORS = [
   "#03224C",
   "#FFC0CB",
   "#808080",
@@ -18,8 +19,13 @@ const DEFAULT_COLORS = [
   "#FFD700"
 ] as const;
 
+const clr = new Color(DEFAULT_COLORS[7]);
+
+setColorsToLocalStorage(undefined);
+
 function App() {
   const appState = useStateInitializer();
+  const { currentColor, setCurrentColor, colorList } = appState;
   return (
     <MainContext.Provider value={appState}>
       <GlobalKeyDownHandler />
@@ -28,10 +34,10 @@ function App() {
         <Divider mb={1.35} />
         <div className="content-wrapper">
           <div className="menu-wrapper">
-            <SearchBlock />
+            <SearchBlock customColors={appState.colorList} />
             <Filters />
           </div>
-          <ColorPalette defaultColors={DEFAULT_COLORS} />
+          <ColorPalette colors={colorList} />
         </div>
       </Container>
     </MainContext.Provider>

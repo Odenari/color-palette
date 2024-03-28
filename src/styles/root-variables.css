@@ -6,8 +6,8 @@
   /* padding */
   --sm-pad: 0.5rem;
   --md-pad: 0.75rem;
-  --lg-pad: 1rem;
-  --xl-pad: 1.5rem;
+  --lg-pad: 1.5rem;
+  --xl-pad: 2rem;
 
   /* margin */
   --sm-mar: 0.75rem;
@@ -33,4 +33,11 @@
   --main-bg-clr: #f4f4f4;
   --btn-bg-clr: #f5dea3;
   --border-color: #818a9298;
+
+  /* clr card params */
+  --clr-card-w: 200px;
+  --clr-card-h: 4rem;
+
+  /* shadows */
+  --standard-shadow: 0 0 0.3rem rgba(169, 169, 169, 0.45);
 }
