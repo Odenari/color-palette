@@ -54,14 +54,6 @@ h1 {
   min-height: 100%;
 }
 
-.color-list-wrapper {
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  gap: var(--lg-gap);
-  align-items: center;
-}
-
 .menu-wrapper {
   max-width: 20%;
   min-width: fit-content;
@@ -96,22 +88,6 @@ h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.default-input {
-  height: var(--input-height, 2rem);
-  width: var(--input-width, 100%);
-  padding: var(--md-pad);
-  background: inherit;
-  border-radius: var(--sm-rad);
-  border: 1px solid var(--border-color);
-}
-
-.color-input {
-  /* add media for mobile input width */
-  --input-height: 3rem;
-  width: 100%;
-  font-size: 1.35rem;
 }
 
 .default-button {

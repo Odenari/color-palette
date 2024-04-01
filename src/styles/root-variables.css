@@ -28,11 +28,12 @@
   --xl-gap: 1rem;
 
   /* colors */
-  --txt-main-clr: #495057;
+  --clr-txt-main: #495057;
   --txt-alt-clr: #566b6a;
   --main-bg-clr: #f4f4f4;
   --btn-bg-clr: #f5dea3;
-  --border-color: #818a9298;
+  --border-color: #818a921f;
+  --clr-success: #4eca62;
 
   /* clr card params */
   --clr-card-w: 200px;

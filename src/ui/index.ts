@@ -5,10 +5,11 @@ import { Divider } from "./Divider";
 import { RadioGroup } from "~/components/RadioGroup";
 import { RangeInput } from "./RangeInput";
 import { RadioInput } from "./RadioInput";
-import { Text } from "./Text";
 import { Title } from "./Title";
 import { Input } from "./Input";
-import { TextInput } from "./TextInput";
+export * from "./TextInput";
+export * from "./ErrorText";
+export * from "./Text";
 
 export {
   Button,
@@ -18,8 +19,6 @@ export {
   RadioGroup,
   RadioInput,
   RangeInput,
-  Text,
   Title,
-  Input,
-  TextInput
+  Input
 };

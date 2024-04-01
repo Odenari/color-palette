@@ -1,15 +1,20 @@
 import { KeyboardEventHandler, useEffect } from "react";
 import { useMainContext } from "~/hooks/useMainContext";
 import { clearAllFilters } from "~/utils/clearAllFilters";
+import type { StateFn } from "~/types";
 
-export const GlobalKeyDownHandler = () => {
-  const { setCurrentColor, toggleFiltersActivity } = useMainContext();
+type Props = {
+  key?: string;
+  clearInput: StateFn<string>;
+};
+export const KeyHandler = ({ clearInput }: Props) => {
+  const { toggleFiltersActivity } = useMainContext();
 
   useEffect(() => {
     const handleKeyDown = ({ key }: KeyboardEvent) => {
       switch (key) {
         case "Escape":
-          clearAllFilters({ setCurrentColor, toggleFiltersActivity });
+          clearAllFilters({ clearInput, toggleFiltersActivity });
           break;
       }
     };

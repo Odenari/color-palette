@@ -9,4 +9,4 @@ export const addHashtag = (clr: string) => {
 };
 
 export const validateHEXcolor = (clr: string): boolean =>
-  !!addHashtag(clr).match(hexColorRegex);
+  !!clr.match(hexColorRegex);

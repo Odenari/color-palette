@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Color } from "~/types";
 
 export const useStateInitializer = () => {
   const [color, setColor] = useState("");
   const [isFiltersActive, setFiltersActivity] = useState(false);
-  const [colorList, setColorList] = useState<string[]>([]);
+  const [customColors, setCustomColors] = useState<Color[]>([]);
   const [redValue, setRedValue] = useState(false);
   return {
     currentColor: color,
@@ -12,7 +13,7 @@ export const useStateInitializer = () => {
     toggleFiltersActivity: setFiltersActivity,
     redValue: redValue,
     setRedValue: setRedValue,
-    colorList: colorList,
-    setColorList: setColorList
+    customColors: customColors,
+    setCustomColors: setCustomColors
   };
 };

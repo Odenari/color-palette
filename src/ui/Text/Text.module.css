@@ -1,0 +1,9 @@
+.default {
+  font-weight: 500;
+  font-size: var(--font-md);
+  color: var(--clr-main-text);
+}
+
+.success {
+  color: var(--clr-success);
+}

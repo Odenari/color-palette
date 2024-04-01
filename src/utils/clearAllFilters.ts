@@ -1,12 +1,14 @@
+import { StateFn } from "~/types";
+
 interface FilterFunctions {
-  setCurrentColor: (color: string) => void;
+  clearInput: StateFn<string>;
   toggleFiltersActivity: (flag: boolean) => void;
 }
 
 export const clearAllFilters = ({
-  setCurrentColor,
+  clearInput,
   toggleFiltersActivity
 }: FilterFunctions) => {
-  setCurrentColor("");
+  clearInput("");
   toggleFiltersActivity(false);
 };

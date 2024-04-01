@@ -1,0 +1,7 @@
+.wrapperPalette {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: var(--lg-gap);
+  align-items: center;
+}

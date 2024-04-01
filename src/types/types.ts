@@ -1,12 +1,22 @@
 export type StateFn<T> = React.Dispatch<React.SetStateAction<T>>;
-export type ColorLists = "defaultColors" | "customColors";
+
+export type InputErrors =
+  | "Color wasn't provided"
+  | "Invalid color. Please, try again."
+  | "";
+export type ColorSubmitStatus = "Color was added" | "Color exists" | "";
+
+export interface Color {
+  isDefault?: boolean;
+  color: string;
+}
 
 export interface ContextProps {
-  setCurrentColor: StateFn<string>;
   currentColor: string;
+  setCurrentColor: StateFn<string>;
   isFiltersActive: boolean;
-  colorList: string[];
-  setColorList: StateFn<string[]>;
+  customColors: Color[];
+  setCustomColors: StateFn<Color[]>;
   toggleFiltersActivity: StateFn<boolean>;
   //TODO this isn't belong here so modify color list by those props or smth like that
   //   luminosity?: number;
