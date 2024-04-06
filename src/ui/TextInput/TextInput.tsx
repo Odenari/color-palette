@@ -26,7 +26,7 @@ export const TextInput = ({
 }: Props) => {
   return (
     <>
-      <label className="w-full" htmlFor={id}>
+      <label className="widthFull" htmlFor={id}>
         {labelText && <span>{labelText}</span>}
         <input
           id={id}
@@ -37,7 +37,6 @@ export const TextInput = ({
           className={`
           ${styles.defaultInput} ${error && styles.errorInput} ${classes}`}
           placeholder={placeholder ? placeholder : "Enter your data"}
-          required
           maxLength={7}
           autoComplete="off"
           title="Find existing color in HEX format or add new one"

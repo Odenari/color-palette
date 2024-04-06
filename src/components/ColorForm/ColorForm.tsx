@@ -1,3 +1,4 @@
+import styles from "./ColorForm.module.css";
 import { Button, TextInput } from "~/ui/";
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
 import {
@@ -6,20 +7,25 @@ import {
   allowedSymbolsRegex,
   validateHEXcolor
 } from "~/utils";
-import { ColorSubmitStatus, InputErrors } from "~/types";
 import { useMainContext } from "~/hooks/useMainContext";
 import { KeyHandler } from "~/logic/KeyDownHandler";
 import DEFAULT_COLORS from "~/defaultColors";
 type Events = FormEvent | KeyboardEvent | MouseEvent<HTMLButtonElement>;
 
 export const ColorForm = () => {
-  const { setCurrentColor, setCustomColors, customColors } = useMainContext();
+  const {
+    setCurrentColor,
+    setCustomColors,
+    customColors,
+    colorInputError,
+    setColorInputError,
+    statusMessage,
+    setStatusMessage
+  } = useMainContext();
   const [inputValue, setInputValue] = useState("");
-  const [error, setError] = useState<InputErrors>("");
-  const [statusMessage, setStatusMessage] = useState<ColorSubmitStatus>("");
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setError("");
+    setColorInputError("");
     setStatusMessage("");
     if (target.value.match(allowedSymbolsRegex)) {
       setInputValue(target.value.toUpperCase());
@@ -28,55 +34,68 @@ export const ColorForm = () => {
 
   const handleSubmit = (e: Events) => {
     e.preventDefault();
-    submitInputValue();
+    submitInputValue(e);
   };
 
   // TODO create usePersistentColors hook to manage localStorage colors
-  function submitInputValue() {
+  function submitInputValue(event: Events) {
     if (!inputValue) {
-      setError("Color wasn't provided");
+      setColorInputError("Color wasn't provided");
       return;
     }
-    setInputValue(addHashtag(inputValue));
-    if (!validateHEXcolor(inputValue)) {
-      setError("Invalid color. Please, try again.");
+    if (!validateHEXcolor(addHashtag(inputValue))) {
+      setColorInputError("Invalid color. Please, try again.");
       return;
     }
 
-    setCurrentColor(inputValue);
     setCustomColors((prevColors) => {
-      [...DEFAULT_COLORS, ...prevColors].some(
+      const isColorExist = [...DEFAULT_COLORS, ...prevColors].some(
         ({ color }) => color === inputValue
-      )
-        ? setStatusMessage("Color exists")
-        : setStatusMessage("Color was added");
-      return [{ color: inputValue }];
+      );
+      if (isColorExist) {
+        setStatusMessage("Color exists");
+      } else {
+        setStatusMessage("Color was added");
+        prevColors.push({ color: inputValue });
+      }
+      return prevColors;
     });
+    setCurrentColor({ color: inputValue });
     updateCustomColors(customColors);
   }
 
   return (
     <>
       <KeyHandler clearInput={setInputValue} />
-      <form onSubmit={(e) => handleSubmit(e)} className="search-wrapper">
+      <form onSubmit={(e) => handleSubmit(e)} className={styles.wrapper}>
         <TextInput
           id="colorInput"
           value={inputValue}
           onChange={handleChange}
-          error={error}
+          error={colorInputError}
           submitStatus={statusMessage}
           placeholder={"# Enter HEX color here..."}
           aria-placeholder="input for hex color code"
         />
         <div className="buttons-wrapper">
           <Button
-            itemType="submit"
+            type="submit"
             onKeyUp={(e) => handleSubmit(e)}
-            onClick={(e) => handleSubmit(e)}
+            onSubmit={(e) => handleSubmit(e)}
           >
             Search
           </Button>
-          <Button onClick={() => setInputValue("")}>Clear</Button>
+          <Button
+            type="button"
+            onClick={() => {
+              setInputValue("");
+              setColorInputError("");
+              setStatusMessage("");
+              setCurrentColor(undefined);
+            }}
+          >
+            Clear
+          </Button>
         </div>
       </form>
     </>

@@ -24,9 +24,9 @@ export const ColorPalette = ({ filters }: Props) => {
   );
 };
 
-function renderColorCards(colors: Color[], currentColor: string) {
+function renderColorCards(colors: Color[], currentColor?: Color) {
   if (currentColor) {
-    return <ColorCard isDefault={false} cardColor={currentColor} />;
+    return <ColorCard isDefault={false} cardColor={currentColor.color} />;
   }
 
   return [...DEFAULT_COLORS, ...(colors.length ? colors : [])].map(

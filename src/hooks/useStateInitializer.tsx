@@ -1,19 +1,24 @@
 import { useState } from "react";
-import { Color } from "~/types";
+import { Color, ColorSubmitStatus, InputErrors } from "~/types";
 
 export const useStateInitializer = () => {
-  const [color, setColor] = useState("");
+  const [currentColor, setCurrentColor] = useState<Color | undefined>(
+    undefined
+  );
   const [isFiltersActive, setFiltersActivity] = useState(false);
   const [customColors, setCustomColors] = useState<Color[]>([]);
-  const [redValue, setRedValue] = useState(false);
+  const [colorInputError, setColorInputError] = useState<InputErrors>("");
+  const [statusMessage, setStatusMessage] = useState<ColorSubmitStatus>("");
   return {
-    currentColor: color,
-    setCurrentColor: setColor,
+    currentColor: currentColor,
+    setCurrentColor: setCurrentColor,
     isFiltersActive: isFiltersActive,
     toggleFiltersActivity: setFiltersActivity,
-    redValue: redValue,
-    setRedValue: setRedValue,
     customColors: customColors,
-    setCustomColors: setCustomColors
+    setCustomColors: setCustomColors,
+    colorInputError: colorInputError,
+    setColorInputError: setColorInputError,
+    statusMessage: statusMessage,
+    setStatusMessage: setStatusMessage
   };
 };

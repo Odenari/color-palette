@@ -1,3 +1,5 @@
+@import url("./utilityStyles.css");
+
 /* Consider to apply normalize file */
 * {
   margin: 0;
@@ -6,6 +8,20 @@
   text-decoration: none;
   outline: none;
   border: none;
+}
+input,
+button,
+label {
+  cursor: pointer;
+}
+
+label {
+  font-size: var(--font-md);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  margin-inline-end: var(--sm-mar);
 }
 
 body {
@@ -34,7 +50,8 @@ h1 {
   text-align: center;
   background-clip: text;
 }
-.w-full {
+
+.widthFull {
   width: 100%;
 }
 
@@ -61,19 +78,6 @@ h1 {
   flex-direction: column;
   gap: var(--lg-gap);
   margin-right: var(--lg-mar);
-}
-
-.search-wrapper,
-.filters-wrapper {
-  min-width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: var(--md-pad);
-  gap: var(--lg-gap);
-  border: 1px solid var(--border-color);
-  border-radius: var(--md-rad);
-  box-shadow: var(--standard-shadow);
 }
 
 .luminosity-outer {
@@ -113,35 +117,6 @@ h1 {
 
 .default-button:active {
   transform: scale(1);
-}
-
-.filters-group-outer {
-  display: flex;
-  flex-direction: column;
-  margin-block: var(--md-mar);
-}
-
-.filters-group-inner {
-  display: flex;
-  flex-direction: column;
-  gap: var(--md-gap);
-}
-
-.color-card {
-  display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
-  gap: var(--lg-gap);
-  font-size: medium;
-  letter-spacing: 1px;
-  font-weight: 900;
-  width: var(--clr-card-w);
-  /* max-width: fit-content; */
-  min-height: var(--clr-card-h);
-  padding: var(--lg-pad);
-  border-radius: var(--md-rad);
-  box-shadow: var(--standard-shadow);
 }
 
 .close-btn {

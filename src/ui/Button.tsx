@@ -4,11 +4,19 @@ type Props = {
   readonly children?: string;
   renderIcon?: () => JSX.Element;
   classes?: string;
+  type?: "submit" | "button";
 } & HTMLAttributes<HTMLButtonElement>;
 
-export const Button = ({ children, renderIcon, onClick, classes }: Props) => {
+export const Button = ({
+  type,
+  children,
+  renderIcon,
+  onClick,
+  classes
+}: Props) => {
   return (
     <button
+      type={type}
       onClick={onClick}
       className={`default-button ${classes ? classes : ""}`}
     >

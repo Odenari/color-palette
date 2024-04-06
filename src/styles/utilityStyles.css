@@ -1,0 +1,16 @@
+.success {
+  color: var(--clr-success);
+}
+
+.marginBlock {
+  margin-block: 0.75rem;
+}
+
+.marginBottom {
+  margin-bottom: 0.45rem;
+}
+
+.underline {
+  text-underline-offset: 8px;
+  text-decoration: underline;
+}

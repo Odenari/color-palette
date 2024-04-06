@@ -1,5 +1,6 @@
-import { Button, Text } from "~/ui";
-import { CloseIcon } from "~/ui/CloseIcon";
+import styles from "./ColorCard.module.css";
+import { useMainContext } from "~/hooks/useMainContext";
+import { Button, Text, CloseIcon } from "~/ui";
 
 type Props = {
   cardColor: string;
@@ -8,17 +9,22 @@ type Props = {
 };
 
 export const ColorCard = ({ cardColor, isDefault }: Props) => {
+  const { setCustomColors } = useMainContext();
   return (
     <>
       {cardColor && (
-        <div className="color-card" style={{ backgroundColor: cardColor }}>
+        <div className={styles.card} style={{ backgroundColor: cardColor }}>
           <Text style={{ color: cardColor ? cardColor : "inherit" }}>
             {cardColor}
           </Text>
           {isDefault || (
             <Button
               classes="close-btn"
-              onClick={() => console.log("click")}
+              onClick={() =>
+                setCustomColors((prevColors) =>
+                  prevColors.filter(({ color }) => color !== cardColor)
+                )
+              }
               renderIcon={() => (
                 <span className="delete-icon">
                   <CloseIcon />

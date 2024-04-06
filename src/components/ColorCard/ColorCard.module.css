@@ -1,0 +1,14 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--lg-gap);
+  font-size: medium;
+  letter-spacing: 1px;
+  font-weight: 900;
+  width: var(--clr-card-w);
+  min-height: var(--clr-card-h);
+  padding: var(--lg-pad);
+  border-radius: var(--md-rad);
+  box-shadow: var(--standard-shadow);
+}

@@ -7,10 +7,5 @@ type Props = {
 } & HTMLAttributes<HTMLParagraphElement>;
 
 export const Text = ({ classes, children }: Props) => {
-  console.log("CLASSES -> ", classes);
-  return (
-    <p className={`${styles.default} ${classes && styles[classes]}`}>
-      {children}
-    </p>
-  );
+  return <p className={`${styles.default} ${classes}`}>{children}</p>;
 };

@@ -1,9 +1,17 @@
 .default {
   font-weight: 500;
-  font-size: var(--font-md);
+  font-size: calc(var(--font-md) * 1.15);
   color: var(--clr-main-text);
 }
 
-.success {
+/* .success {
   color: var(--clr-success);
 }
+
+.marginBlock {
+  margin-block: 0.75rem;
+}
+
+.marginBottom {
+  margin-bottom: 0.45rem;
+} */

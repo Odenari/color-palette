@@ -1,0 +1,11 @@
+.wrapper {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--md-pad);
+  gap: var(--lg-gap);
+  border: 1px solid var(--border-color);
+  border-radius: var(--md-rad);
+  box-shadow: var(--standard-shadow);
+}
