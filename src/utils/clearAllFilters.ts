@@ -1,10 +1,10 @@
 import { useMainContext } from "~/hooks/useMainContext";
-import { Color, StateFn } from "~/types";
+import { ColorItem, StateFn } from "~/types";
 
 interface FilterFunctions {
   clearInput: StateFn<string>;
   toggleFiltersActivity: (flag: boolean) => void;
-  setCurrentColor: StateFn<Color>;
+  setCurrentColor: StateFn<ColorItem>;
 }
 
 export const clearAllFilters = ({

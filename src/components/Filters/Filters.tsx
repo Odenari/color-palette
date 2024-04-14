@@ -9,12 +9,14 @@ export const Filters = () => {
 
   return (
     <section className={styles.wrapper}>
-      <Checkbox
-        id="enableFilters"
-        checked={isFiltersActive}
-        labelText="Enable Filters"
-        onChange={(e) => toggleFiltersActivity(e.target.checked)}
-      />
+      <div className={"flex-center"}>
+        <Checkbox
+          id="enableFilters"
+          checked={isFiltersActive}
+          labelText="Enable Filters"
+          onChange={(e) => toggleFiltersActivity(e.target.checked)}
+        />
+      </div>
       <div className={`${!isFiltersActive && styles.disabledWrapper}`}>
         <Text classes="flex-center marginBlock">Sort colors by:</Text>
         <FlexBox justifyContent="space-between">

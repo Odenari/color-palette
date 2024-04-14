@@ -1,35 +1,44 @@
 import styles from "./ColorCard.module.css";
 import { useMainContext } from "~/hooks/useMainContext";
 import { Button, Text, CloseIcon } from "~/ui";
+import Color from "color";
 
 type Props = {
   cardColor: string;
   isDefault?: boolean;
-  iconColor?: string;
 };
 
 export const ColorCard = ({ cardColor, isDefault }: Props) => {
-  const { setCustomColors } = useMainContext();
+  let negatedClr = "";
+  let clr = Color(cardColor);
+  const clrGroup = clr.keyword();
+
+  if (clrGroup === "grey" || clrGroup === "gray") {
+    negatedClr = clr.negate().lighten(0.75).hex();
+  } else {
+    negatedClr = clr.negate().darken(0.2).hex();
+  }
+
+  const { setCustomColors, setCurrentColor } = useMainContext();
   return (
-    <>
-      {cardColor && (
-        <div className={styles.card} style={{ backgroundColor: cardColor }}>
-          <Text style={{ color: cardColor ? cardColor : "inherit" }}>
-            {cardColor}
-          </Text>
-          {isDefault || (
-            <Button
-              classes="close-btn"
-              onClick={() =>
-                setCustomColors((prevColors) =>
-                  prevColors.filter(({ color }) => color !== cardColor)
-                )
-              }
-              renderIcon={() => <CloseIcon />}
-            />
-          )}
-        </div>
+    <div className={styles.card} style={{ backgroundColor: clr.toString() }}>
+      <Text style={{ color: negatedClr }}>{cardColor}</Text>
+      {isDefault || (
+        <Button
+          btnIconColor={negatedClr}
+          style={{
+            color: negatedClr
+          }}
+          classes="close-btn"
+          onClick={() => {
+            setCurrentColor(undefined);
+            setCustomColors((prevColors) =>
+              prevColors.filter(({ color }) => color !== cardColor)
+            );
+          }}
+          renderIcon={() => <CloseIcon />}
+        />
       )}
-    </>
+    </div>
   );
 };

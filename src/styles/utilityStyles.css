@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.widthFull {
+  width: 100%;
+}
+
 .small-text {
   font-size: var(--font-sm);
 }

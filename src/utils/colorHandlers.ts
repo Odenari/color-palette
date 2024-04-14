@@ -1,4 +1,4 @@
-import { Color } from "~/types";
+import { ColorItem } from "~/types";
 
 export function fetchCustomColors(): string[] {
   const storedColors = localStorage.getItem("colors");

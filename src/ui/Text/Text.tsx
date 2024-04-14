@@ -6,6 +6,10 @@ type Props = {
   children: ReactNode;
 } & HTMLAttributes<HTMLParagraphElement>;
 
-export const Text = ({ classes, children }: Props) => {
-  return <p className={`${styles.default} ${classes}`}>{children}</p>;
+export const Text = ({ classes, children, ...other }: Props) => {
+  return (
+    <p className={`${styles.default} ${classes ? classes : ""}`} {...other}>
+      {children}
+    </p>
+  );
 };

@@ -1,27 +1,30 @@
-import { HTMLAttributes, MouseEvent } from "react";
+import { ButtonHTMLAttributes, HTMLAttributes, MouseEvent } from "react";
 
 type Props = {
   readonly children?: string;
   renderIcon?: () => JSX.Element;
   classes?: string;
-  type?: "submit" | "button";
-} & HTMLAttributes<HTMLButtonElement>;
+  btnIconColor?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({
-  type,
   children,
   renderIcon,
   onClick,
-  classes
+  classes,
+  btnIconColor,
+  ...other
 }: Props) => {
   return (
     <button
-      type={type}
       onClick={onClick}
       className={`default-button ${classes ? classes : ""}`}
+      {...other}
     >
       {children && children}
-      {renderIcon && <span>{renderIcon()}</span>}
+      {renderIcon && (
+        <span style={{ color: btnIconColor }}>{renderIcon()}</span>
+      )}
     </button>
   );
 };

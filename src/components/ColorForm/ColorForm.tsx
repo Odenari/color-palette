@@ -10,6 +10,7 @@ import {
 import { useMainContext } from "~/hooks/useMainContext";
 import { KeyHandler } from "~/logic/KeyDownHandler";
 import DEFAULT_COLORS from "~/defaultColors";
+
 type Events = FormEvent | KeyboardEvent | MouseEvent<HTMLButtonElement>;
 
 export const ColorForm = () => {
@@ -34,11 +35,11 @@ export const ColorForm = () => {
 
   const handleSubmit = (e: Events) => {
     e.preventDefault();
-    submitInputValue(e);
+    submitInputValue();
   };
 
   // TODO create usePersistentColors hook to manage localStorage colors
-  function submitInputValue(event: Events) {
+  function submitInputValue() {
     if (!inputValue) {
       setColorInputError("Color was not provided");
       return;

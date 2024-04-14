@@ -18,7 +18,16 @@ function App() {
           <div className="menu-wrapper">
             <ColorForm />
             <Filters />
-            <button onClick={removeCustomColors}>REMOVE & REFRESH</button>
+            <button
+              style={{
+                width: "100%",
+                height: "80px",
+                borderRadius: "8px"
+              }}
+              onClick={removeCustomColors}
+            >
+              REMOVE & REFRESH
+            </button>
           </div>
           <ColorPalette />
         </div>

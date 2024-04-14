@@ -1,6 +1,6 @@
-import type { Color } from "./types";
+import type { ColorItem } from "./types";
 
-const DEFAULT_COLORS: Color[] = [
+const DEFAULT_COLORS: ColorItem[] = [
   { isDefault: true, color: "#03224C" },
   { isDefault: true, color: "#FFC0CB" },
   { isDefault: true, color: "#808080" },

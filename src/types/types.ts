@@ -9,7 +9,7 @@ export type ColorSubmitStatus = "Color was added" | "Color exists" | undefined;
 
 export type SaturationColors = "Red" | "Green" | "Blue";
 
-export interface Color {
+export interface ColorItem {
   isDefault?: boolean;
   color: string;
 }

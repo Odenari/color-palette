@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const RGBSaturationFilters = ({ disabled }: Props) => {
-  const { saturatuionFilters, setSaturationFilters } = useMainContext();
+  const { saturationFilters, setSaturationFilters } = useMainContext();
 
   return (
     <fieldset>
@@ -15,10 +15,12 @@ export const RGBSaturationFilters = ({ disabled }: Props) => {
         <Text classes="marginBottom underline">Saturation</Text>
       </legend>
       <FlexBox flexDirection="column" alignItems="start">
-        {Object.entries(saturatuionFilters).map(([color, active]) => (
+        {Object.entries(saturationFilters).map(([color, active]) => (
           <Checkbox
+            key={color}
             labelText={`${color} over 50%`}
             disabled={disabled}
+            checked={active}
             onChange={(e) =>
               setSaturationFilters((prevFilters) => ({
                 ...prevFilters,

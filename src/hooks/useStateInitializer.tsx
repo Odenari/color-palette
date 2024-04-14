@@ -1,18 +1,28 @@
 import { useState } from "react";
-import { FilterByBrightness, SaturationFilter } from "~/types";
+import {
+  ColorItem,
+  ColorSubmitStatus,
+  FilterByBrightness,
+  InputErrors,
+  SaturationFilter
+} from "~/types";
 
 export type MainContextType = ReturnType<typeof useStateInitializer>;
 
 export const useStateInitializer = () => {
   const [isFiltersActive, toggleFiltersActivity] = useState(false);
-  const [currentColor, setCurrentColor] = useState(undefined);
-  const [customColors, setCustomColors] = useState([]);
-  const [colorInputError, setColorInputError] = useState(undefined);
-  const [statusMessage, setStatusMessage] = useState(undefined);
+  const [currentColor, setCurrentColor] = useState<ColorItem>();
+  const [customColors, setCustomColors] = useState<ColorItem[]>([]);
+  const [colorInputError, setColorInputError] =
+    useState<InputErrors>(undefined);
+  const [statusMessage, setStatusMessage] =
+    useState<ColorSubmitStatus>(undefined);
   const [brightness, setBrightness] = useState<FilterByBrightness>("All");
-  const [saturatuionFilters, setSaturationFilters] = useState<SaturationFilter>(
-    { Red: false, Green: false, Blue: false }
-  );
+  const [saturationFilters, setSaturationFilters] = useState<SaturationFilter>({
+    Red: false,
+    Green: false,
+    Blue: false
+  });
   const [luminosity, setLuminosity] = useState(0);
 
   return {
@@ -28,7 +38,7 @@ export const useStateInitializer = () => {
     setStatusMessage,
     brightness,
     setBrightness,
-    saturatuionFilters,
+    saturationFilters,
     setSaturationFilters,
     luminosity,
     setLuminosity

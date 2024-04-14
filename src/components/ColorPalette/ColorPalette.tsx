@@ -1,32 +1,76 @@
 import style from "./ColorPalette.module.css";
 import DEFAULT_COLORS from "~/defaultColors";
-import { Text } from "~/ui";
-import { ColorCard } from "~c/ColorCard";
-import { Color } from "~/types";
 import { useMainContext } from "~/hooks/useMainContext";
+import { ColorCard } from "~c/";
+import { Text } from "~/ui";
+import { ReactNode, useMemo, useState } from "react";
+import Color from "color";
 
 export const ColorPalette = () => {
-  const { currentColor, customColors, filters } = useMainContext();
-  console.log("Filters inside ColorPalette -> ", filters);
-  return (
-    <div className={style.wrapperPalette}>
-      {renderColorCards(customColors, currentColor) || (
+  const {
+    currentColor,
+    customColors,
+    brightness,
+    saturationFilters,
+    luminosity
+  } = useMainContext();
+
+  let colors = useMemo(
+    () => [...DEFAULT_COLORS, ...(customColors.length ? customColors : [])],
+    []
+  );
+
+  function filterColors(): void {
+    switch (brightness) {
+      case "All":
+        break;
+      case "Lightest":
+        colors = colors.filter((item) => Color(item.color).isLight());
+        break;
+      case "Darkest":
+        colors = colors.filter((item) => Color(item.color).isDark());
+        break;
+    }
+
+    const { Red, Green, Blue } = saturationFilters;
+    if (Red) {
+      colors = colors.filter((item) => Color(item.color).red() > 255 / 2);
+    }
+    if (Green) {
+      colors = colors.filter((item) => Color(item.color).green() > 255 / 2);
+    }
+    if (Blue) {
+      colors = colors.filter((item) => Color(item.color).blue() > 255 / 2);
+    }
+
+    if (luminosity) {
+      colors = colors.filter(
+        (item) => Color(item.color).luminosity() >= luminosity
+      );
+    }
+  }
+
+  function renderColorCards(): ReactNode {
+    if (currentColor) {
+      return (
+        <ColorCard
+          cardColor={currentColor.color}
+          isDefault={currentColor.isDefault}
+        />
+      );
+    }
+    filterColors();
+    if (!colors.length) {
+      return (
         <Text>
           There is nothing to show, because filters are hiding everything
         </Text>
-      )}
-    </div>
-  );
-};
-
-function renderColorCards(colors: Color[], currentColor?: Color) {
-  if (currentColor) {
-    return <ColorCard isDefault={false} cardColor={currentColor.color} />;
+      );
+    }
+    return colors.map(({ color, isDefault }) => (
+      <ColorCard cardColor={color} key={color} isDefault={isDefault} />
+    ));
   }
 
-  return [...DEFAULT_COLORS, ...(colors.length ? colors : [])].map(
-    ({ color, isDefault }) => (
-      <ColorCard cardColor={color} key={color} isDefault={isDefault} />
-    )
-  );
-}
+  return <div className={style.wrapperPalette}>{renderColorCards()}</div>;
+};
