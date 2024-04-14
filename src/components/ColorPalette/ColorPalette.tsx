@@ -1,18 +1,13 @@
 import style from "./ColorPalette.module.css";
 import DEFAULT_COLORS from "~/defaultColors";
 import { Text } from "~/ui";
-import { ColorCard } from "../ColorCard/ColorCard";
+import { ColorCard } from "~c/ColorCard";
+import { Color } from "~/types";
 import { useMainContext } from "~/hooks/useMainContext";
-import type { Color } from "~/types";
 
-type Props = {
-  filters?: {
-    all: "showAll";
-  };
-};
-
-export const ColorPalette = ({ filters }: Props) => {
-  const { currentColor, customColors } = useMainContext();
+export const ColorPalette = () => {
+  const { currentColor, customColors, filters } = useMainContext();
+  console.log("Filters inside ColorPalette -> ", filters);
   return (
     <div className={style.wrapperPalette}>
       {renderColorCards(customColors, currentColor) || (

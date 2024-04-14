@@ -1,10 +1,11 @@
 export type StateFn<T> = React.Dispatch<React.SetStateAction<T>>;
 
 export type InputErrors =
-  | "Color wasn't provided"
+  | "Color was not provided"
   | "Invalid color. Please, try again."
-  | "";
-export type ColorSubmitStatus = "Color was added" | "Color exists" | "";
+  | undefined;
+
+export type ColorSubmitStatus = "Color was added" | "Color exists" | undefined;
 
 export type SaturationColors = "Red" | "Green" | "Blue";
 
@@ -13,21 +14,25 @@ export interface Color {
   color: string;
 }
 
-export interface ContextProps {
-  currentColor: Color;
-  setCurrentColor: StateFn<Color>;
-  isFiltersActive: boolean;
-  toggleFiltersActivity: StateFn<boolean>;
-  customColors: Color[];
-  setCustomColors: StateFn<Color[]>;
-  colorInputError: InputErrors;
-  setColorInputError: StateFn<InputErrors>;
-  statusMessage: ColorSubmitStatus;
-  setStatusMessage: StateFn<ColorSubmitStatus>;
-  //TODO this isn't belong here so modify color list by those props or smth like that
-  //   luminosity?: number;
-  //   showAll: boolean;
-  //   showDexportue: StateFn<boolean>;
-  //   isMoreGreen: boolean;
-  //   isMoreBlue: boolean;
+export type SaturationFilter = {
+  [color in SaturationColors]: boolean;
+};
+
+export type FilterByBrightness = "All" | "Lightest" | "Darkest";
+
+export type Filters = {
+  luminosity: number;
+  brightness: FilterByBrightness;
+  saturation: SaturationFilter;
+};
+
+export type PossibleFilters = Partial<Filters>;
+
+export type FiltersKeys = keyof Filters;
+
+export type FiltersValues = Filters[keyof Filters];
+
+export interface FiltersAction {
+  type: FiltersKeys;
+  payload: FiltersValues;
 }

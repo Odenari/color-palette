@@ -1,15 +1,11 @@
-import { ChangeEvent } from "react";
 import styles from "./Filters.module.css";
+import { ChangeEvent } from "react";
 import { useMainContext } from "~/hooks/useMainContext";
-import { Checkbox, RangeInput, Text } from "~/ui";
-import { FlexBox } from "~/ui/FlexBox";
-import { RGBFilters, SaturationFilters } from "~c/";
+import { Checkbox, Text, FlexBox } from "~/ui";
+import { RGBSaturationFilters, BrightnessFilters, LuminosityFilter } from "~c/";
 
 export const Filters = () => {
   const { isFiltersActive, toggleFiltersActivity } = useMainContext();
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    toggleFiltersActivity(e.currentTarget.checked);
-  };
 
   return (
     <section className={styles.wrapper}>
@@ -17,15 +13,15 @@ export const Filters = () => {
         id="enableFilters"
         checked={isFiltersActive}
         labelText="Enable Filters"
-        handleChange={handleChange}
+        onChange={(e) => toggleFiltersActivity(e.target.checked)}
       />
       <div className={`${!isFiltersActive && styles.disabledWrapper}`}>
-        <Text classes="marginBlock">Sort colors by:</Text>
+        <Text classes="flex-center marginBlock">Sort colors by:</Text>
         <FlexBox justifyContent="space-between">
-          <SaturationFilters isDisabled={isFiltersActive} />
-          <RGBFilters />
+          <BrightnessFilters disabled={!isFiltersActive} />
+          <RGBSaturationFilters disabled={!isFiltersActive} />
         </FlexBox>
-        <RangeInput />
+        <LuminosityFilter disabled={!isFiltersActive} />
       </div>
     </section>
   );

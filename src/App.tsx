@@ -1,8 +1,9 @@
 import Color from "color";
-import { MainContext } from "./mainContext";
+import { MainContext } from "./contexts/mainContext";
 import { Container, Divider, Title } from "~/ui";
 import { ColorPalette, ColorForm, Filters } from "~c/";
 import { useStateInitializer } from "./hooks/useStateInitializer";
+// temp functionality
 import { removeCustomColors } from "./utils";
 
 function App() {

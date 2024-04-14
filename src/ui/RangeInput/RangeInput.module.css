@@ -1,0 +1,13 @@
+.defaultStyles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: var(--md-gap);
+}
+
+.defaultStyles > input,
+.defaultStyles > span {
+  width: 100%;
+}

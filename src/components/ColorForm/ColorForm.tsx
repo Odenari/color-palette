@@ -25,8 +25,8 @@ export const ColorForm = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    setColorInputError("");
-    setStatusMessage("");
+    setColorInputError(undefined);
+    setStatusMessage(undefined);
     if (target.value.match(allowedSymbolsRegex)) {
       setInputValue(target.value.toUpperCase());
     }
@@ -40,7 +40,7 @@ export const ColorForm = () => {
   // TODO create usePersistentColors hook to manage localStorage colors
   function submitInputValue(event: Events) {
     if (!inputValue) {
-      setColorInputError("Color wasn't provided");
+      setColorInputError("Color was not provided");
       return;
     }
     if (!validateHEXcolor(addHashtag(inputValue))) {
@@ -89,8 +89,8 @@ export const ColorForm = () => {
             type="button"
             onClick={() => {
               setInputValue("");
-              setColorInputError("");
-              setStatusMessage("");
+              setColorInputError(undefined);
+              setStatusMessage(undefined);
               setCurrentColor(undefined);
             }}
           >

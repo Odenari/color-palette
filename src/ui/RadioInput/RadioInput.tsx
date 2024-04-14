@@ -1,33 +1,15 @@
+import { FilterByBrightness } from "~/types";
 import styles from "./RadioInput.module.css";
-import { ChangeEventHandler, HTMLAttributes } from "react";
+import { HTMLAttributes, InputHTMLAttributes } from "react";
 
 type Props = {
-  id: string;
-  value: string;
-  checked: boolean;
-  name?: string;
   labelText: string;
-  handleChange: ChangeEventHandler;
-} & HTMLAttributes<HTMLInputElement>;
+} & InputHTMLAttributes<HTMLInputElement>;
 
-export const RadioInput = ({
-  name,
-  id,
-  value,
-  checked,
-  handleChange,
-  labelText
-}: Props) => {
+export const RadioInput = ({ labelText, name, ...other }: Props) => {
   return (
-    <label className={styles.wrapper} htmlFor={name ? name : id}>
-      <input
-        id={id}
-        type="radio"
-        name={name ? name : id}
-        onChange={(e) => handleChange(e)}
-        value={value}
-        checked={checked}
-      />
+    <label className={styles.wrapper} htmlFor={name}>
+      <input type="radio" {...other} />
       {labelText && <span className={styles.label}>{labelText}</span>}
     </label>
   );

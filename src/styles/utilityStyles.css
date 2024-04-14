@@ -1,6 +1,15 @@
 .success {
   color: var(--clr-success);
 }
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.small-text {
+  font-size: var(--font-sm);
+}
 
 .marginBlock {
   margin-block: 0.75rem;
@@ -13,4 +22,15 @@
 .underline {
   text-underline-offset: 8px;
   text-decoration: underline;
+}
+
+.close-btn {
+  min-width: 1rem;
+  background: transparent;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+.close-btn:hover {
+  transform: none;
 }

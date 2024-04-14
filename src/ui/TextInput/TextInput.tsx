@@ -43,7 +43,7 @@ export const TextInput = ({
         />
       </label>
       {error && <ErrorText>{error}</ErrorText>}
-      {submitStatus && <Text classes="success">{submitStatus}</Text>}
+      {submitStatus && <Text classes="success small-text">{submitStatus}</Text>}
     </>
   );
 };

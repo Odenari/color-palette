@@ -25,11 +25,7 @@ export const ColorCard = ({ cardColor, isDefault }: Props) => {
                   prevColors.filter(({ color }) => color !== cardColor)
                 )
               }
-              renderIcon={() => (
-                <span className="delete-icon">
-                  <CloseIcon />
-                </span>
-              )}
+              renderIcon={() => <CloseIcon />}
             />
           )}
         </div>
