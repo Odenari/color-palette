@@ -9,3 +9,6 @@
   border-radius: var(--md-rad);
   box-shadow: var(--standard-shadow);
 }
+.searchInput {
+  cursor: text;
+}

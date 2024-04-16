@@ -3,5 +3,17 @@
   width: 100%;
   flex-wrap: wrap;
   gap: var(--lg-gap);
-  align-items: center;
+}
+
+.singleItemWrapper {
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
+
+@media (max-width: 584px) {
+  .wrapperPalette {
+    justify-content: space-evenly;
+  }
 }

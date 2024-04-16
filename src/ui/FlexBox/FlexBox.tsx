@@ -1,3 +1,4 @@
+import styles from "./FlexBox.module.css";
 import { HTMLAttributes, ReactNode } from "react";
 
 type CSSAlignment =
@@ -28,8 +29,8 @@ export const FlexBox = ({
 }: Props) => {
   return (
     <div
+      className={styles.flexBox}
       style={{
-        display: "flex",
         flexDirection: flexDirection,
         justifyContent: justifyContent,
         alignItems: alignItems,

@@ -1,20 +1,20 @@
-import { KeyboardEventHandler, useEffect } from "react";
-import { useMainContext } from "~/hooks/useMainContext";
-import { clearAllFilters, clearCurrentState } from "~/utils/clearAllFilters";
+import { useEffect } from "react";
+import { useClearAll } from "~/hooks/useClearAll";
 import type { StateFn } from "~/types";
 
 type Props = {
-  clearInput: StateFn<string>;
+  searchInputSetter?: StateFn<string>;
 };
-export const KeyHandler = ({ clearInput }: Props) => {
-  const { setCurrentColor, toggleFiltersActivity } = useMainContext();
+
+export const KeyHandler = ({ searchInputSetter }: Props): null => {
+  const clearAll = useClearAll();
 
   useEffect(() => {
     const handleKeyDown = ({ key }: KeyboardEvent) => {
       switch (key) {
         case "Escape":
-          clearCurrentState();
-          clearInput("");
+          clearAll();
+          searchInputSetter("");
           break;
       }
     };

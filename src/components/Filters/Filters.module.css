@@ -9,7 +9,3 @@
   border-radius: var(--md-rad);
   box-shadow: var(--standard-shadow);
 }
-
-.disabledWrapper {
-  background-color: rgba(179, 171, 171 0.45);
-}

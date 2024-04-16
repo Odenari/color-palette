@@ -8,7 +8,6 @@
   border: none;
 }
 
-input,
 button,
 label {
   cursor: pointer;
@@ -50,15 +49,6 @@ h1 {
   background-clip: text;
 }
 
-.container {
-  min-width: 100%;
-  min-height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--main-bg-clr);
-  padding-inline: 1rem;
-}
-
 .content-wrapper {
   padding-block: var(--md-pad);
   display: flex;
@@ -82,27 +72,14 @@ h1 {
   align-items: center;
 }
 
-.default-button {
-  position: relative;
-  padding-block: var(--btn-y-pad, 0.5rem);
-  padding-inline: var(--btn-y-pad, 0.75rem);
-  font-size: var(--font-lg);
-  border-radius: var(--sm-rad);
-  background-color: var(--btn-bg-clr);
-  color: var(--txt-alt-clr);
-  cursor: pointer;
-  font-weight: 500;
-  transition: transform 120ms ease-out;
-}
-
-.default-button:hover {
-  transform: scale(1.05);
-}
-
-.default-button:focus {
-  outline: 2px solid gainsboro;
-}
-
-.default-button:active {
-  transform: scale(1);
+@media (max-width: 584px) {
+  .content-wrapper {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--xl-mar);
+  }
+  .menu-wrapper {
+    margin-right: 0;
+  }
 }

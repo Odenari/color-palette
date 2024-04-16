@@ -1,0 +1,24 @@
+.defaultButton {
+  position: relative;
+  padding-block: var(--btn-y-pad, 0.5rem);
+  padding-inline: var(--btn-y-pad, 0.75rem);
+  font-size: var(--font-lg);
+  border-radius: var(--sm-rad);
+  background-color: var(--btn-bg-clr);
+  color: var(--txt-alt-clr);
+  cursor: pointer;
+  font-weight: 500;
+  transition: transform 120ms ease-out;
+}
+
+.defaultButton:hover {
+  transform: scale(1.05);
+}
+
+.defaultButton:focus {
+  outline: 2px solid gainsboro;
+}
+
+.defaultButton:active {
+  transform: scale(1);
+}

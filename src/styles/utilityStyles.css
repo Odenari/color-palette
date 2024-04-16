@@ -1,7 +1,7 @@
 .success {
   color: var(--clr-success);
 }
-.flex-center {
+.flexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,6 +29,10 @@
 }
 
 .close-btn {
+  position: absolute;
+  z-index: 5;
+  top: 10px;
+  right: 10px;
   min-width: 1rem;
   background: transparent;
   padding-inline: 0;

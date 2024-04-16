@@ -1,4 +1,5 @@
-import { ButtonHTMLAttributes, HTMLAttributes, MouseEvent } from "react";
+import styles from "./Button.module.css";
+import { ButtonHTMLAttributes } from "react";
 
 type Props = {
   readonly children?: string;
@@ -10,15 +11,13 @@ type Props = {
 export const Button = ({
   children,
   renderIcon,
-  onClick,
   classes,
   btnIconColor,
   ...other
 }: Props) => {
   return (
     <button
-      onClick={onClick}
-      className={`default-button ${classes ? classes : ""}`}
+      className={`${styles.defaultButton} ${classes ? classes : ""}`}
       {...other}
     >
       {children && children}

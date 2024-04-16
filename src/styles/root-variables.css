@@ -37,8 +37,7 @@
   --clr-success: #4eca62;
 
   /* clr card params */
-  --clr-card-w: 200px;
-  --clr-card-h: 4rem;
+  --clr-card-w: 160px;
 
   /* shadows */
   --standard-shadow: 0 0 0.3rem rgba(169, 169, 169, 0.45);

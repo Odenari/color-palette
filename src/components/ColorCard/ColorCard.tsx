@@ -11,24 +11,23 @@ type Props = {
 export const ColorCard = ({ cardColor, isDefault }: Props) => {
   let negatedClr = "";
   let clr = Color(cardColor);
-  const clrGroup = clr.keyword();
+  const clrTone = clr.keyword();
 
-  if (clrGroup === "grey" || clrGroup === "gray") {
+  // edge case => negating of grayish colors kinda meaningless
+  if (clrTone === "grey" || clrTone === "gray") {
     negatedClr = clr.negate().lighten(0.75).hex();
   } else {
     negatedClr = clr.negate().darken(0.2).hex();
   }
 
-  const { setCustomColors, setCurrentColor } = useMainContext();
+  const { setCustomColors, setCurrentColor, customColors } = useMainContext();
+
   return (
     <div className={styles.card} style={{ backgroundColor: clr.toString() }}>
       <Text style={{ color: negatedClr }}>{cardColor}</Text>
       {isDefault || (
         <Button
           btnIconColor={negatedClr}
-          style={{
-            color: negatedClr
-          }}
           classes="close-btn"
           onClick={() => {
             setCurrentColor(undefined);
@@ -36,7 +35,7 @@ export const ColorCard = ({ cardColor, isDefault }: Props) => {
               prevColors.filter(({ color }) => color !== cardColor)
             );
           }}
-          renderIcon={() => <CloseIcon />}
+          renderIcon={() => <CloseIcon clr={negatedClr} />}
         />
       )}
     </div>

@@ -1,9 +1,6 @@
-import { Button } from "./Button";
-
-import { Container } from "./Container";
-import { Divider } from "./Divider";
-import { RadioInput } from "./RadioInput/RadioInput";
-import { Title } from "./Title";
+export * from "./Container";
+export * from "./RadioInput";
+export * from "./Button";
 export * from "./FlexBox";
 export * from "./Checkbox";
 export * from "./TextInput";
@@ -12,4 +9,6 @@ export * from "./Text";
 export * from "./icons/CloseIcon";
 export * from "./RangeInput";
 
-export { Button, Container, Divider, RadioInput, Title };
+import { Divider } from "./Divider";
+import { Title } from "./Title";
+export { Divider, Title };

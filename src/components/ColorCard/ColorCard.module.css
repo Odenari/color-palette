@@ -1,14 +1,15 @@
 .card {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: var(--lg-gap);
   font-size: medium;
   letter-spacing: 1px;
   font-weight: 900;
-  width: var(--clr-card-w);
-  min-height: var(--clr-card-h);
-  padding: var(--lg-pad);
+  min-width: var(--clr-card-w);
+  width: fit-content;
+  aspect-ratio: 1/1;
+  padding: var(--md-pad);
   border-radius: var(--md-rad);
   box-shadow: var(--standard-shadow);
 }

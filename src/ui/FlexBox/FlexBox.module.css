@@ -1,0 +1,10 @@
+.flexBox {
+  display: flex;
+}
+
+@media (max-width: 584px) {
+  .flexBox {
+    width: 100%;
+    flex-direction: column !important;
+  }
+}

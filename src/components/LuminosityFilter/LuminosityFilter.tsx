@@ -14,7 +14,7 @@ export const LuminosityFilter = ({ disabled }: Props) => {
         value={luminosity}
         labelText="Luminosity"
         disabled={disabled}
-        className="flex-center"
+        className="flexCenter"
         onChange={(e) => setLuminosity(Number(e.target.value))}
       />
     </div>

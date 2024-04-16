@@ -1,9 +1,10 @@
-import style from "./ColorPalette.module.css";
+import styles from "./ColorPalette.module.css";
 import DEFAULT_COLORS from "~/defaultColors";
 import { useMainContext } from "~/hooks/useMainContext";
 import { ColorCard } from "~c/";
 import { Text } from "~/ui";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useMemo } from "react";
+import { ColorItem } from "~/types";
 import Color from "color";
 
 export const ColorPalette = () => {
@@ -15,9 +16,9 @@ export const ColorPalette = () => {
     luminosity
   } = useMainContext();
 
-  let colors = useMemo(
-    () => [...DEFAULT_COLORS, ...(customColors.length ? customColors : [])],
-    []
+  let colors: ColorItem[] = useMemo(
+    () => [...DEFAULT_COLORS, ...customColors],
+    [customColors.length]
   );
 
   function filterColors(): void {
@@ -53,24 +54,27 @@ export const ColorPalette = () => {
   function renderColorCards(): ReactNode {
     if (currentColor) {
       return (
-        <ColorCard
-          cardColor={currentColor.color}
-          isDefault={currentColor.isDefault}
-        />
+        <div className={styles.singleItemWrapper}>
+          <ColorCard
+            cardColor={currentColor.color}
+            isDefault={currentColor.isDefault}
+          />
+        </div>
       );
     }
     filterColors();
     if (!colors.length) {
       return (
-        <Text>
+        <Text className="widthFull flexCenter">
           There is nothing to show, because filters are hiding everything
         </Text>
       );
     }
-    return colors.map(({ color, isDefault }) => (
+
+    return Array.from(new Set(colors)).map(({ color, isDefault }) => (
       <ColorCard cardColor={color} key={color} isDefault={isDefault} />
     ));
   }
 
-  return <div className={style.wrapperPalette}>{renderColorCards()}</div>;
+  return <div className={styles.wrapperPalette}>{renderColorCards()}</div>;
 };
