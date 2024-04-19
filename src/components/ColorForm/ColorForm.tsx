@@ -1,12 +1,14 @@
 import styles from "./ColorForm.module.css";
+import DEFAULT_COLORS from "~/defaultColors";
 import { Button, TextInput } from "~/ui/";
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
-import { addHashtag, allowedSymbolsRegex, validateHEXcolor } from "~/utils";
-import { useMainContext } from "~/hooks/useMainContext";
-import { KeyHandler } from "~/logic/KeyDownHandler";
-import DEFAULT_COLORS from "~/defaultColors";
-import { useClearAll } from "~/hooks/useClearAll";
-import { getColorsFromStorage, saveColorToStorage } from "~/utils/storeManager";
+import { useKeyHandler, useClearAll, useMainContext } from "~/hooks/";
+import {
+  addHashtag,
+  allowedSymbolsRegex,
+  validateHEXcolor,
+  saveColorToStorage
+} from "~/utils";
 
 type Events = FormEvent | KeyboardEvent | MouseEvent<HTMLButtonElement>;
 
@@ -14,13 +16,13 @@ export const ColorForm = () => {
   const {
     setCurrentColor,
     setCustomColors,
-    customColors,
     colorInputError,
     setColorInputError,
     statusMessage,
     setStatusMessage
   } = useMainContext();
   const clearAll = useClearAll();
+  useKeyHandler;
   const [inputValue, setInputValue] = useState("");
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +62,6 @@ export const ColorForm = () => {
     });
     saveColorToStorage({ color: addHashtag(inputValue) });
     setCurrentColor({ color: addHashtag(inputValue) });
-    // window.dispatchEvent(new Event("storage"));
   }
 
   const handleClearBtn = () => {
@@ -70,7 +71,6 @@ export const ColorForm = () => {
 
   return (
     <>
-      <KeyHandler searchInputSetter={setInputValue} />
       <form onSubmit={(e) => handleSubmit(e)} className={styles.wrapper}>
         <TextInput
           id="colorInput"

@@ -1,11 +1,11 @@
+import Color from "color";
 import styles from "./ColorPalette.module.css";
 import DEFAULT_COLORS from "~/defaultColors";
-import { useMainContext } from "~/hooks/useMainContext";
+import { useMainContext } from "~/hooks";
 import { ColorCard } from "~c/";
 import { Text } from "~/ui";
 import { ReactNode, useMemo } from "react";
 import { ColorItem } from "~/types";
-import Color from "color";
 
 export const ColorPalette = () => {
   const {

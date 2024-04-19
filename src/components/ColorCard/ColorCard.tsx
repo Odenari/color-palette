@@ -1,8 +1,8 @@
+import Color from "color";
 import styles from "./ColorCard.module.css";
 import { useMainContext } from "~/hooks/useMainContext";
 import { Button, Text, CloseIcon } from "~/ui";
-import Color from "color";
-import { removeColorFromStorage } from "~/utils/storeManager";
+import { removeColorFromStorage } from "~/utils";
 
 type Props = {
   cardColor: string;

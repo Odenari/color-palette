@@ -1,7 +1,7 @@
-import { MainContext } from "./contexts/mainContext";
+import { MainContext } from "./contexts";
+import { useStateInitializer } from "./hooks";
 import { Container, Divider, Title } from "~/ui";
 import { ColorPalette, ColorForm, Filters } from "~c/";
-import { useStateInitializer } from "./hooks/useStateInitializer";
 
 function App() {
   const appState = useStateInitializer();

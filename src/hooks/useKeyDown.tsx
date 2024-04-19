@@ -3,10 +3,11 @@ import { useClearAll } from "~/hooks/useClearAll";
 import type { StateFn } from "~/types";
 
 type Props = {
+  key: string;
   searchInputSetter?: StateFn<string>;
 };
 
-export const KeyHandler = ({ searchInputSetter }: Props): null => {
+export const useKeyHandler = ({ key, searchInputSetter }: Props): null => {
   const clearAll = useClearAll();
 
   useEffect(() => {
