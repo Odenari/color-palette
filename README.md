@@ -1,17 +1,16 @@
 # Color Palette
 
-The global goal was to practice TypeScript in React application.
-As well as creating filtration for list in fun and creative manner, without using **flashy** libraries and tools.
+The global goal was to practice TypeScript in a React application, as well as creating a filtration for the list in a fun and creative manner, without using _flashy_ libraries and tools.
 
-## I've got a lot of fun doing it, learn a lot and will keep going!
+## I had a lot of fun doing it 😊
 
-### As user you can:
+### As a user, you can:
 
-- search, add and remove colors to the list;
-- sort list by one or more available filters;
+- Search, add, and remove colors from the list.
+- Sort the list by one or more available filters.
 
-### Behavior of app:
+### App logic:
 
-- 10 default colors will stay unchangeble;
-- any custom color will be saved within localStorage;
-- multiple tabs will synchronize colors with any update of localStorage;
+- The 10 default colors will remain unchanged.
+- Any custom color will be saved within localStorage.
+- Multiple tabs will synchronize colors with any updates to localStorage.
