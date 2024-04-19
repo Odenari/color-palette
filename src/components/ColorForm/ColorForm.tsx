@@ -1,16 +1,12 @@
 import styles from "./ColorForm.module.css";
 import { Button, TextInput } from "~/ui/";
 import { ChangeEvent, FormEvent, MouseEvent, useState } from "react";
-import {
-  addHashtag,
-  allowedSymbolsRegex,
-  validateHEXcolor,
-  updateCustomColorsStorage
-} from "~/utils";
+import { addHashtag, allowedSymbolsRegex, validateHEXcolor } from "~/utils";
 import { useMainContext } from "~/hooks/useMainContext";
 import { KeyHandler } from "~/logic/KeyDownHandler";
 import DEFAULT_COLORS from "~/defaultColors";
 import { useClearAll } from "~/hooks/useClearAll";
+import { getColorsFromStorage, saveColorToStorage } from "~/utils/storeManager";
 
 type Events = FormEvent | KeyboardEvent | MouseEvent<HTMLButtonElement>;
 
@@ -62,8 +58,9 @@ export const ColorForm = () => {
       }
       return prevColors;
     });
+    saveColorToStorage({ color: addHashtag(inputValue) });
     setCurrentColor({ color: addHashtag(inputValue) });
-    updateCustomColorsStorage(customColors);
+    // window.dispatchEvent(new Event("storage"));
   }
 
   const handleClearBtn = () => {

@@ -6,5 +6,6 @@
   .flexBox {
     width: 100%;
     flex-direction: column !important;
+    align-items: start !important;
   }
 }

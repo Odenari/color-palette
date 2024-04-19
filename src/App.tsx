@@ -1,10 +1,7 @@
-import Color from "color";
 import { MainContext } from "./contexts/mainContext";
 import { Container, Divider, Title } from "~/ui";
 import { ColorPalette, ColorForm, Filters } from "~c/";
 import { useStateInitializer } from "./hooks/useStateInitializer";
-// temp functionality
-import { removeCustomColors } from "./utils";
 
 function App() {
   const appState = useStateInitializer();
@@ -18,16 +15,6 @@ function App() {
           <div className="menu-wrapper">
             <ColorForm />
             <Filters />
-            <button
-              style={{
-                width: "100%",
-                height: "80px",
-                borderRadius: "8px"
-              }}
-              onClick={removeCustomColors}
-            >
-              REMOVE & REFRESH
-            </button>
           </div>
           <ColorPalette />
         </div>

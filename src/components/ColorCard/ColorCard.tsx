@@ -2,6 +2,7 @@ import styles from "./ColorCard.module.css";
 import { useMainContext } from "~/hooks/useMainContext";
 import { Button, Text, CloseIcon } from "~/ui";
 import Color from "color";
+import { removeColorFromStorage } from "~/utils/storeManager";
 
 type Props = {
   cardColor: string;
@@ -20,7 +21,7 @@ export const ColorCard = ({ cardColor, isDefault }: Props) => {
     negatedClr = clr.negate().darken(0.2).hex();
   }
 
-  const { setCustomColors, setCurrentColor, customColors } = useMainContext();
+  const { setCustomColors, setCurrentColor } = useMainContext();
 
   return (
     <div className={styles.card} style={{ backgroundColor: clr.toString() }}>
@@ -31,6 +32,7 @@ export const ColorCard = ({ cardColor, isDefault }: Props) => {
           classes="close-btn"
           onClick={() => {
             setCurrentColor(undefined);
+            removeColorFromStorage({ color: cardColor });
             setCustomColors((prevColors) =>
               prevColors.filter(({ color }) => color !== cardColor)
             );

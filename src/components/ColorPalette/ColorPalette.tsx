@@ -15,7 +15,6 @@ export const ColorPalette = () => {
     saturationFilters,
     luminosity
   } = useMainContext();
-
   let colors: ColorItem[] = useMemo(
     () => [...DEFAULT_COLORS, ...customColors],
     [customColors.length]

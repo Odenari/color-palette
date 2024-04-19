@@ -1,2 +1,2 @@
-export * from "./colorHandlers";
 export * from "./validation";
+export * from "./storeManager";

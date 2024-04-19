@@ -9,3 +9,9 @@
   border-radius: var(--md-rad);
   box-shadow: var(--standard-shadow);
 }
+
+@media (max-width: 584px) {
+  .wrapper {
+    align-items: start;
+  }
+}

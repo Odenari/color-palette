@@ -7,6 +7,13 @@
   gap: var(--md-gap);
 }
 
+.defaultStyles > input {
+  cursor: grab;
+}
+.defaultStyles {
+  cursor: default;
+}
+
 .defaultStyles > input,
 .defaultStyles > span {
   width: 100%;

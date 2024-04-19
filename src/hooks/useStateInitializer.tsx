@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getColorsFromStorage } from "~/utils/storeManager";
 import {
   ColorItem,
   ColorSubmitStatus,
@@ -12,7 +13,8 @@ export type MainContextType = ReturnType<typeof useStateInitializer>;
 export const useStateInitializer = () => {
   const [isFiltersActive, toggleFiltersActivity] = useState(false);
   const [currentColor, setCurrentColor] = useState<ColorItem>();
-  const [customColors, setCustomColors] = useState<ColorItem[]>([]);
+  const [customColors, setCustomColors] =
+    useState<ColorItem[]>(getColorsFromStorage);
   const [colorInputError, setColorInputError] =
     useState<InputErrors>(undefined);
   const [statusMessage, setStatusMessage] =
@@ -24,6 +26,17 @@ export const useStateInitializer = () => {
     Blue: false
   });
   const [luminosity, setLuminosity] = useState(0);
+
+  // will reinit custom colors on every tab
+  useEffect(() => {
+    function onStorage() {
+      setCustomColors(getColorsFromStorage);
+    }
+    window.addEventListener("storage", onStorage);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+    };
+  }, [customColors]);
 
   return {
     currentColor,

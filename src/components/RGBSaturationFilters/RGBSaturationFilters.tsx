@@ -1,4 +1,3 @@
-import { InputHTMLAttributes } from "react";
 import { useMainContext } from "~/hooks/useMainContext";
 import { Text, Checkbox, FlexBox } from "~/ui";
 

@@ -25,7 +25,7 @@
     "paths": {
       "~/*": ["./src/*"],
       "~c/*": ["./src/components/"],
-      "~ui/*": ["./src/components/ui/*"],
+      "~ui/*": ["./src/ui/*"],
       "~s/*": ["./src/styles/*"]
     }
   },

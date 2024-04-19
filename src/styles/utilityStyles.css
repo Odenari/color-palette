@@ -1,10 +1,17 @@
 .success {
   color: var(--clr-success);
 }
+
 .flexCenter {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media (max-width: 584px) {
+  .flexCenter {
+    justify-content: start;
+  }
 }
 
 .widthFull {
