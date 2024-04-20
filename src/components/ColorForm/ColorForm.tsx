@@ -22,8 +22,8 @@ export const ColorForm = () => {
     setStatusMessage
   } = useMainContext();
   const clearAll = useClearAll();
-  useKeyHandler;
   const [inputValue, setInputValue] = useState("");
+  useKeyHandler({ key: "Escape", clearFn: setInputValue });
 
   const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     setColorInputError(undefined);
