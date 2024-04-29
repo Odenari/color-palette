@@ -52,7 +52,6 @@ export const ColorPalette = () => {
   }
 
   function renderColorCards(): ReactNode {
-    console.log(currentColor);
     if (currentColor) {
       return (
         <div className={styles.singleItemWrapper}>

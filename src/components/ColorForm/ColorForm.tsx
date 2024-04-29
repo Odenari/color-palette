@@ -14,6 +14,7 @@ type Events = FormEvent | KeyboardEvent | MouseEvent<HTMLButtonElement>;
 
 export const ColorForm = () => {
   const {
+    customColors,
     setCurrentColor,
     setCustomColors,
     colorInputError,
@@ -50,22 +51,22 @@ export const ColorForm = () => {
 
     setCustomColors((prevColors) => {
       const isColorExist = [...DEFAULT_COLORS, ...prevColors].some(
-        ({ color }) => color === inputValue
+        ({ color }) => color === addHashtag(inputValue)
       );
-
       if (isColorExist) {
         setStatusMessage("Color exists");
+        return;
       } else {
         setStatusMessage("Color was added");
-        prevColors.push({ color: addHashtag(inputValue) });
+        return [...prevColors, { color: addHashtag(inputValue) }];
       }
-      return prevColors;
     });
-    saveColorToStorage({ color: addHashtag(inputValue) });
+
     setCurrentColor({
       color: addHashtag(inputValue),
       isDefault: DEFAULT_COLORS.some(({ color }) => color === inputValue)
     });
+    saveColorToStorage({ color: addHashtag(inputValue) });
   }
 
   const handleClearBtn = () => {

@@ -1,4 +1,5 @@
 import { ColorItem } from "~/types";
+import DEFAULT_COLORS from "~/defaultColors";
 
 export function getColorsFromStorage(): ColorItem[] {
   const colors: string = localStorage.getItem("colors");
@@ -18,8 +19,13 @@ export function getColorsFromStorage(): ColorItem[] {
 
 export function saveColorToStorage(value: ColorItem): void {
   const savedColors = getColorsFromStorage();
-  if (savedColors.find((item) => item.color === value.color)) {
+  const isColorExist = [...savedColors, ...DEFAULT_COLORS].some(
+    (savedItem) => savedItem.color === value.color
+  );
+  if (isColorExist) {
     console.info("A color exists in the Storage.");
+    localStorage.setItem("colors", JSON.stringify([...savedColors]));
+    window.dispatchEvent(new Event("storage"));
     return;
   }
   localStorage.setItem("colors", JSON.stringify([...savedColors, value]));
