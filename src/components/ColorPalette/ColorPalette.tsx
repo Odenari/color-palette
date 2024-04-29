@@ -15,6 +15,7 @@ export const ColorPalette = () => {
     saturationFilters,
     luminosity
   } = useMainContext();
+
   let colors: ColorItem[] = useMemo(
     () => [...DEFAULT_COLORS, ...customColors],
     [customColors.length]
@@ -51,6 +52,7 @@ export const ColorPalette = () => {
   }
 
   function renderColorCards(): ReactNode {
+    console.log(currentColor);
     if (currentColor) {
       return (
         <div className={styles.singleItemWrapper}>

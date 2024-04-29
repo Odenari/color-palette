@@ -52,6 +52,7 @@ export const ColorForm = () => {
       const isColorExist = [...DEFAULT_COLORS, ...prevColors].some(
         ({ color }) => color === inputValue
       );
+
       if (isColorExist) {
         setStatusMessage("Color exists");
       } else {
@@ -61,7 +62,10 @@ export const ColorForm = () => {
       return prevColors;
     });
     saveColorToStorage({ color: addHashtag(inputValue) });
-    setCurrentColor({ color: addHashtag(inputValue) });
+    setCurrentColor({
+      color: addHashtag(inputValue),
+      isDefault: DEFAULT_COLORS.some(({ color }) => color === inputValue)
+    });
   }
 
   const handleClearBtn = () => {

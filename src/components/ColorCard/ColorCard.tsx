@@ -22,11 +22,10 @@ export const ColorCard = ({ cardColor, isDefault }: Props) => {
   }
 
   const { setCustomColors, setCurrentColor } = useMainContext();
-
   return (
     <div className={styles.card} style={{ backgroundColor: clr.toString() }}>
       <Text style={{ color: negatedClr }}>{cardColor}</Text>
-      {isDefault || (
+      {isDefault ? null : (
         <Button
           btnIconColor={negatedClr}
           classes="close-btn"
